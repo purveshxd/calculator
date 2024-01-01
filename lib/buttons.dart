@@ -1,46 +1,38 @@
 import 'package:flutter/material.dart';
 
 class CalButton extends StatelessWidget {
+  final String buttonText;
+  final void Function()? buttonTap;
+  final Widget? widget;
+  final Color? textColor;
+  final Color? buttonColor;
   const CalButton(
       {Key? key,
       required this.buttonText,
-      this.color,
+      this.buttonTap,
+      this.widget,
       this.textColor,
-      this.buttonTap})
+      this.buttonColor})
       : super(key: key);
-
-  final String buttonText;
-  final color;
-  final textColor;
-  final buttonTap;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: buttonTap,
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Container(
-          child: Center(
-              child: Text(
-            buttonText,
-            style: TextStyle(
-                color: textColor, fontWeight: FontWeight.bold, fontSize: 15),
-          )),
-          height: 20,
-          width: 20,
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(color: color, blurRadius: 5, spreadRadius: 1),
-              BoxShadow(color: color, blurRadius: 5, spreadRadius: 1)
-            ],
-            color: Colors.grey.shade900,
-            borderRadius: BorderRadius.all(
-              Radius.circular(25),
-            ),
-          ),
-        ),
-      ),
-    );
+    return FilledButton.tonal(
+        style: FilledButton.styleFrom(backgroundColor: buttonColor),
+        // onLongPress: () {
+
+        // },
+        onPressed: buttonTap,
+        child: Center(
+          child: widget ??
+              Text(
+                buttonText,
+                textAlign: TextAlign.center,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineLarge!
+                    .copyWith(color: textColor),
+              ),
+        ));
   }
 }
