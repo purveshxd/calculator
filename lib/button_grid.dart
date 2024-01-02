@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:full_calculator/buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -53,6 +54,7 @@ class _ButtonGridState extends State<ButtonGrid> {
             children: [
               Expanded(
                 child: Container(
+                  padding: const EdgeInsets.all(10),
                   width: width,
                   margin: const EdgeInsets.only(bottom: 10),
                   decoration: BoxDecoration(
@@ -60,21 +62,28 @@ class _ButtonGridState extends State<ButtonGrid> {
                       color: Theme.of(context).colorScheme.secondaryContainer),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
+                        AutoSizeText(
                           userQue,
+                          maxLines: 2,
+                          softWrap: true,
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Colors.grey.shade400,
                             fontSize: MediaQuery.of(context).size.width / 7,
                           ),
                         ),
-                        Text(
-                          userAns,
-                          style: TextStyle(
-                            color: Colors.grey.shade400,
-                            fontSize: MediaQuery.of(context).size.width / 6,
+                        Flexible(
+                          child: AutoSizeText(
+                            userAns,
+                            maxLines: 1,
+                            softWrap: true,
+                            style: TextStyle(
+                              color: Colors.grey.shade400,
+                              fontSize: MediaQuery.of(context).size.width / 5,
+                            ),
                           ),
                         ),
                       ]),
