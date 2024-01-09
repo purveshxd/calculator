@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CalButton extends StatelessWidget {
-  final String buttonText;
+  final String? buttonText;
   final void Function()? buttonTap;
   final Widget? widget;
   final Color? textColor;
   final Color? buttonColor;
   const CalButton(
       {Key? key,
-      required this.buttonText,
+      this.buttonText,
       this.buttonTap,
       this.widget,
       this.textColor,
@@ -26,11 +26,11 @@ class CalButton extends StatelessWidget {
         child: Center(
           child: widget ??
               Text(
-                buttonText,
+                buttonText!,
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
-                    .headlineLarge!
+                    .headlineMedium!
                     .copyWith(color: textColor),
               ),
         ));

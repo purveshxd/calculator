@@ -1,10 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:full_calculator/buttons.dart';
 import 'package:math_expressions/math_expressions.dart';
 
+import 'package:full_calculator/buttons.dart';
+
 class ButtonGrid extends StatefulWidget {
-  const ButtonGrid({super.key});
+  final void Function()? buttonTap;
+
+  const ButtonGrid({
+    Key? key,
+    required this.buttonTap,
+  }) : super(key: key);
 
   @override
   State<ButtonGrid> createState() => _ButtonGridState();
@@ -71,7 +78,7 @@ class _ButtonGridState extends State<ButtonGrid> {
                           softWrap: true,
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            color: Colors.grey.shade400,
+                            color: Theme.of(context).colorScheme.onBackground,
                             fontSize: MediaQuery.of(context).size.width / 7,
                           ),
                         ),
@@ -81,7 +88,7 @@ class _ButtonGridState extends State<ButtonGrid> {
                             maxLines: 1,
                             softWrap: true,
                             style: TextStyle(
-                              color: Colors.grey.shade400,
+                              color: Theme.of(context).colorScheme.onBackground,
                               fontSize: MediaQuery.of(context).size.width / 5,
                             ),
                           ),
@@ -142,12 +149,10 @@ class _ButtonGridState extends State<ButtonGrid> {
                       );
                     } else if (buttons[index] == 'A') {
                       return CalButton(
-                        buttonTap: () {
-                          setState(() {
-                            operations();
-                          });
-                        },
-                        buttonText: buttons[index],
+                        widget: Theme.of(context).brightness == Brightness.dark
+                            ? const Icon(Icons.dark_mode_rounded)
+                            : const Icon(Icons.light_mode_rounded),
+                        buttonTap: widget.buttonTap,
                       );
                     } else {
                       if (isOperator(buttons[index])) {

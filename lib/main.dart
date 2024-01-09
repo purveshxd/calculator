@@ -12,13 +12,27 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  ThemeMode themeMode = ThemeMode.dark;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(brightness: Brightness.dark, useMaterial3: true),
-      themeMode: ThemeMode.dark,
-      home: const ButtonGrid(),
+      theme: ThemeData(brightness: Brightness.light, useMaterial3: true),
+      darkTheme: ThemeData(brightness: Brightness.dark, useMaterial3: true),
+      themeMode: themeMode,
+      home: ButtonGrid(
+        buttonTap: () {
+          setState(() {
+            if (themeMode == ThemeMode.light) {
+              themeMode = ThemeMode.dark;
+              print(themeMode.name);
+            } else {
+              themeMode = ThemeMode.light;
+              print(themeMode.name);
+            }
+          });
+        },
+      ),
     );
   }
 }
