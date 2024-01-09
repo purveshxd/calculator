@@ -2,13 +2,13 @@
 
 A Calculator app made with Flutter.
 
-### [Link to the apk]()
+### [Link to the apk](https://drive.google.com/file/d/1ZdLyxLfKls37zJNcRmF2zGW0QH5QgNEX/view?usp=drive_link)
 
 ## UI
 
-![Calculator](.\media\calculator.png "myExpenses")
+![Calculator](https://github.com/purveshxd/calculator/blob/main/media/calculator.png "myExpenses")
 
-![Calculator](.\media\calculator-1.png "myExpenses")
+![Calculator](https://github.com/purveshxd/calculator/blob/main/media/calculator-1.png "myExpenses")
 
 ### Development status
 
